@@ -1,12 +1,31 @@
 # Hexagonal Grid Pathfinding (Movhex)
 
-Implementation of an optimized pathfinding engine for a logistic company operating on a hexagonal grid map. The system handles dynamic edge weights (air routes) and terrain costs.
+An optimized pathfinding engine in C for a logistics company operating on a hexagonal grid map. The system handles dynamic edge weights (air routes) and terrain costs.
 
-## Key Features
+## Key features
 
-* **Algorithm:** Dijkstra's Algorithm adapted for hexagonal topology using cube coordinates conversion.
-* **Optimization:** Implemented a custom Hash Map caching system to handle repetitive queries efficiently (`O(1)` lookup for cached routes).
-* **Performance:** Written in **pure C** using manual memory management and flat arrays for cache locality.
+- **Algorithm:** Dijkstra's algorithm adapted to hexagonal topology using cube coordinates conversion.
+- **Optimization:** a custom hash map cache for repeated queries, with `O(1)` lookup of cached routes.
+- **Performance:** pure C with manual memory management and flat arrays for cache locality.
+
+## Build
+
+```
+gcc -O2 -Wall -o hex_pathfinding hex_pathfinding.c -lm
+```
+
+## Usage
+
+The program reads commands from standard input:
+
+| Command | Arguments | Effect |
+| --- | --- | --- |
+| `init` | `columns rows` | Creates the map |
+| `change_cost` | `x y v radius` | Changes the terrain cost around a cell |
+| `toggle_air_route` | `x1 y1 x2 y2` | Adds or removes an air route between two cells |
+| `travel_cost` | `xs ys xd yd` | Prints the minimum travel cost between two cells |
+| `quit` | | Exits |
 
 ## Context
-Developed as a final project for the *Algorithms and Data Structures* course at **Politecnico di Milano**.
+
+Final project for the *Algorithms and Data Structures* course at Politecnico di Milano.
